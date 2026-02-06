@@ -30,10 +30,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-    var counter by remember { mutableStateOf(0) }
+
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -44,15 +45,45 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     ) {
 
         Text(
-            text = "You clicked $counter times",
-            style = MaterialTheme.typography.headlineMedium
+            text = "Upwork Writers",
+            style = MaterialTheme.typography.headlineLarge
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
-        Button(onClick = { counter++ }) {
-            Text(text = "Click Me")
+        androidx.compose.material3.OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Email") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        androidx.compose.material3.OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Password") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Button(
+            onClick = {
+                // TODO: handle login later
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "Login")
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Don't have an account? Register",
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 }
 
@@ -63,3 +94,5 @@ fun HomeScreenPreview() {
         HomeScreen()
     }
 }
+
+
